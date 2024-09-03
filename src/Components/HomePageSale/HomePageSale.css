@@ -1,0 +1,24 @@
+.background-black-20 {
+    background-color: rgb(33 33 33 / 0.2);
+}
+
+@media (min-width:768px) {
+    .heroimg:hover img {
+        scale: 1.05;
+    }
+    
+    .sale1:hover{
+        background-color: rgb(33 33 33 / 0.4);
+    }
+    .sale1show {
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    }
+    
+    .sale1:hover .sale1show {
+        opacity: 1;
+        visibility: visible;
+    }
+    
+}

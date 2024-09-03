@@ -1,0 +1,32 @@
+/* Hide scrollbar */
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+.scrollbar-hide {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.hero11 {
+    position: relative;
+   
+}
+
+.heroimg img {
+    
+    object-fit: cover; /* Make sure the image covers the container */
+}
+
+.background-black-20 {
+    background-color: rgb(33 33 33 / 0.2);
+}
+
+.heroimg:hover img {
+    scale: 1.05;
+}

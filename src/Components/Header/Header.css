@@ -1,0 +1,51 @@
+.bg-custom-green {
+    background: rgb(47, 97, 46);
+}
+
+.menuanimation {
+    animation: fadeIn 500ms ease-out normal;
+}
+
+@keyframes fadeIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
+.menuanimation1 {
+    animation: fadeIn1 500ms both normal;
+}
+
+@keyframes fadeIn1 {
+    from {
+        height:0;
+    }
+    to {
+        height: 100vh;
+    }
+}
+
+.menuanimation2 {
+    animation: fadeIn2 500ms ease-in normal;
+}
+
+@keyframes fadeIn2 {
+    from {
+        height:100vh;
+        visibility: 1;
+    }
+    to {
+        height: 0vh;
+        opacity: 0;
+        
+    }
+}
+
+ li{
+    list-style: none;
+}

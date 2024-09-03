@@ -1,0 +1,5 @@
+@media (min-width:768px) {
+    .more1:hover .moreimg img{
+        scale:1.05
+    }
+}
