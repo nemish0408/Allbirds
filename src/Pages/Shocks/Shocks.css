@@ -1,0 +1,16 @@
+.shock-show:hover .shock-add{
+    display: block;
+    outline: 10px solid white;
+    
+}
+
+.hover-shadow:hover{
+    outline: 10px solid white;
+    box-shadow: 0px 0px 30px 20px rgb(179, 179, 179) ;
+    
+}
+
+.hover-shadow:hover .shock-add{
+        box-shadow: 0px 25px 30px 20px rgb(179, 179, 179) ;
+     
+}

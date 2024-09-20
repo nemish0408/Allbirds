@@ -14,11 +14,11 @@ function Home() {
       <Layout>
         <Slider></Slider>
         <HomePageHero></HomePageHero>
-        {/* <LifestyleCollections></LifestyleCollections> */}
+        <LifestyleCollections></LifestyleCollections>
         <HomePageSale></HomePageSale>
         <BestSeller></BestSeller>
         <MoreToShop></MoreToShop>
-        <HomeInfo></HomeInfo>
+        
       </Layout>
     </div>
   )

@@ -65,7 +65,7 @@ function HomePageSale() {
                 </div>
 
                 <div>
-                    <div className='flex flex-auto flex-nowrap space-x-4 overflow-x-scroll scrollbar-hide w-full h-full md:grid md:grid-cols-2 gap-2'
+                    <div className='flex flex-auto flex-nowrap space-x-4 overflow-x-scroll hide-scrollbar w-full h-full md:grid md:grid-cols-2 gap-2'
                     style={{ scrollBehavior: 'smooth', width: '100%' }}>
                         {itemsArray.map((item: any, index: any) => (
                             <div className='min-w-[75%] h-full flex items-center justify-center relative flex z-20 h-full sale1 duration-300'>

@@ -90,16 +90,23 @@ function LifestyleCollections() {
         checkScrollPosition();
         const handleScroll = () => checkScrollPosition();
         window.addEventListener('resize', calculateScrollPositions);
-        scrollContainerRef.current.addEventListener('scroll', handleScroll);
         
+        if (scrollContainerRef.current) {
+            scrollContainerRef.current.addEventListener('scroll', handleScroll);
+        }
+
         return () => {
             window.removeEventListener('resize', calculateScrollPositions);
-            scrollContainerRef.current.removeEventListener('scroll', handleScroll);
+            
+            if (scrollContainerRef.current) {
+                scrollContainerRef.current.removeEventListener('scroll', handleScroll);
+            }
         };
     }, [scrollPositions]);
 
     return (
         <div className=''>
+            {/* Buttons for categories */}
             <div className="flex gap-3 md:gap-8 m-8">
                 <div className="relative">
                     <button
@@ -108,7 +115,6 @@ function LifestyleCollections() {
                         Everyday Wear
                     </button>
                 </div>
-
                 <div className="relative">
                     <button
                         onClick={() => handleButtonClick(1)}
@@ -116,7 +122,6 @@ function LifestyleCollections() {
                         On The Move
                     </button>
                 </div>
-
                 <div className="relative">
                     <button
                         onClick={() => handleButtonClick(2)}
@@ -126,6 +131,7 @@ function LifestyleCollections() {
                 </div>
             </div>
 
+            {/* Scrollable product section */}
             <div className="m-3 md:m-8 px-2 max-h-max ">
                 <div className="w-full h-full relative z-20 hidden md:block">
                     <div className="absolute top-[50px] md:top-[320px] h-full left-0">

@@ -1,9 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react'
-import './MoreToShop.css'
-import pic1 from './img/pic1.avif'
-import pic2 from './img/pic2.avif'
-import pic3 from './img/pic3.avif'
-import pic4 from './img/pic4.avif'
+import React, { useEffect, useRef, useState } from 'react';
+import './MoreToShop.css';
+import pic1 from './img/pic1.avif';
+import pic2 from './img/pic2.avif';
+import pic3 from './img/pic3.avif';
+import pic4 from './img/pic4.avif';
 import { Link } from 'react-router-dom';
 
 function MoreToShop() {
@@ -16,16 +16,20 @@ function MoreToShop() {
     const scrollPositions = [0, 1450, 2900, 4350];
 
     const checkScrollPosition = () => {
-        const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current;
-        setCanScrollLeft(scrollLeft > 0);
-        setCanScrollRight(scrollLeft + clientWidth < (scrollWidth - 1));
+        if (scrollContainerRef.current) {
+            const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current;
+            setCanScrollLeft(scrollLeft > 0);
+            setCanScrollRight(scrollLeft + clientWidth < (scrollWidth - 1));
+        }
     };
 
     const scrollToPosition = (position: number) => {
-        scrollContainerRef.current.scrollTo({
-            left: position,
-            behavior: 'smooth',
-        });
+        if (scrollContainerRef.current) {
+            scrollContainerRef.current.scrollTo({
+                left: position,
+                behavior: 'smooth',
+            });
+        }
     };
 
     const getNearestScrollPosition = (currentPos: number, direction: 'left' | 'right') => {
@@ -46,33 +50,22 @@ function MoreToShop() {
     };
 
     const handleScrollLeft = () => {
-        const currentPos = scrollContainerRef.current.scrollLeft;
+        const currentPos = scrollContainerRef.current?.scrollLeft ?? 0;
         const nearestPosition = getNearestScrollPosition(currentPos, 'left');
         scrollToPosition(nearestPosition);
-        console.log(canScrollLeft);
-
     };
 
     const handleScrollRight = () => {
-        const currentPos = scrollContainerRef.current.scrollLeft;
+        const currentPos = scrollContainerRef.current?.scrollLeft ?? 0;
         const nearestPosition = getNearestScrollPosition(currentPos, 'right');
         scrollToPosition(nearestPosition);
-        console.log(canScrollLeft);
     };
-
-
 
     const itemsArray: any = [
         { src: pic1, head: 'Men’s Breathable Shoes' },
         { src: pic2, head: 'Women’s Breezy Styles' },
         { src: pic1, head: 'Men’s Sporty Styles' },
         { src: pic2, head: 'Women’s Athleisure Styles' },
-        { src: pic1, head: 'Men’s Lightweight Styles' },
-        { src: pic2, head: 'Women’s Packable Shoes' },
-        { src: pic1, head: 'Men’s Lightweight Styles' },
-        { src: pic2, head: 'Women’s Packable Shoes' },
-        { src: pic1, head: 'Men’s Lightweight Styles' },
-        { src: pic2, head: 'Women’s Packable Shoes' },
         { src: pic1, head: 'Men’s Lightweight Styles' },
         { src: pic2, head: 'Women’s Packable Shoes' },
     ];
@@ -85,24 +78,33 @@ function MoreToShop() {
         { src: pic3, head: 'Men’s Lightweight Styles' },
         { src: pic4, head: 'Women’s Packable Shoes' },
     ];
+
     const womwnHandler = () => {
         setIArray(itemsArray);
-        setTab(true)
-    }
+        setTab(true);
+    };
 
     const manHandler = () => {
         setIArray(itemsArray1);
-        setTab(false)
-    }
+        setTab(false);
+    };
+
     useEffect(() => {
         manHandler();
         womwnHandler();
         const handleScroll = () => checkScrollPosition();
-        scrollContainerRef.current.addEventListener('scroll', handleScroll);
+        
+        if (scrollContainerRef.current) {
+            scrollContainerRef.current.addEventListener('scroll', handleScroll);
+        }
+
         return () => {
-            scrollContainerRef.current.removeEventListener('scroll', handleScroll);
+            if (scrollContainerRef.current) {
+                scrollContainerRef.current.removeEventListener('scroll', handleScroll);
+            }
         };
     }, []);
+
     return (
         <section className='my-16 md:my-5'>
             <div className='flex w-full justify-between p-3 pt-12 md:p-12'>
@@ -113,7 +115,7 @@ function MoreToShop() {
                     <div className="relative font-medium">
                         <button
                             onClick={womwnHandler}
-                            className={`inline-block transition-all font-medium duration-300  ${tab && 'before:absolute before:bottom-0 before:h-px before:bg-black before:transition-all before:duration-300 before:w-full hover:before:w-full before:left-0 hover:before:left-0 font-bold'} `}>
+                            className={`inline-block transition-all font-medium duration-300 ${tab && 'before:absolute before:bottom-0 before:h-px before:bg-black before:transition-all before:duration-300 before:w-full hover:before:w-full before:left-0 hover:before:left-0 font-bold'} `}>
                             WOMENS
                         </button>
                     </div>
@@ -121,17 +123,15 @@ function MoreToShop() {
                     <div className="relative font-medium">
                         <button
                             onClick={manHandler}
-                            className={`inline-block transition-all font-medium duration-300 duration-300  ${!tab && 'before:absolute before:bottom-0 before:h-px before:bg-black before:transition-all before:duration-300 before:w-full hover:before:w-full before:left-0 hover:before:left-0 font-bold'} `}>
+                            className={`inline-block transition-all font-medium duration-300 duration-300 ${!tab && 'before:absolute before:bottom-0 before:h-px before:bg-black before:transition-all before:duration-300 before:w-full hover:before:w-full before:left-0 hover:before:left-0 font-bold'} `}>
                             MENS
                         </button>
                     </div>
-
-
                 </div>
             </div>
 
             <div className="mx-2 md:mx-8 px-2 max-h-max">
-                <div className="hidden md:block w-full h-full relative z-30">
+                <div className="hidden md:block w-full h-full relative z-20">
                     <div className="absolute top-[200px] h-full left-0">
                         <div className="flex w-full align-middle justify-between px-2 opacity-50">
                             <button
@@ -147,7 +147,7 @@ function MoreToShop() {
                         </div>
                     </div>
                 </div>
-                <div className="hidden md:block w-full h-full relative z-30">
+                <div className="hidden md:block w-full h-full relative z-20">
                     <div className="absolute top-[200px] h-full right-0">
                         <div className="flex w-full align-middle justify-between px-2 opacity-50">
                             <button
@@ -165,13 +165,13 @@ function MoreToShop() {
                 </div>
                 <div
                     ref={scrollContainerRef}
-                    className="flex space-x-4 overflow-x-scroll scrollbar-hide max-h-max flex-auto flex-nowrap w-full h-full"
+                    className="flex space-x-4 overflow-x-scroll hide-scrollbar max-h-max flex-auto flex-nowrap w-full h-full"
                     style={{ scrollBehavior: 'smooth', width: '100%' }}
                 >
                     {iArray.map((item: any, index: any) => (
                         <div
                             key={index}
-                            className="min-w-[75%] h-full flex items-center justify-center relative flex z-20 h-full duration-300 md:min-w-[24%] md:h-full text-xl font-bold"
+                            className="min-w-[75%] h-full flex items-center justify-center relative flex h-full duration-300 md:min-w-[24%] md:h-full text-xl font-bold"
                         >
                             <Link to=''>
                                 <div className='relative more1 '>
@@ -181,10 +181,9 @@ function MoreToShop() {
                                             className='w-full h-full object-cover duration-300 ease-in-out '
                                             alt="Product"
                                         />
-
                                     </div>
                                     <div className='top-0 left-0 w-full h-full'>
-                                        <h1 className=' font-bold text-sm xl:text-base'>
+                                        <h1 className='font-bold text-sm xl:text-base'>
                                             {item.head}
                                         </h1>
                                         <p className='text-sm xl:text-base font-normal'>Blizzard</p>
@@ -196,9 +195,8 @@ function MoreToShop() {
                     ))}
                 </div>
             </div>
-
         </section>
-    )
+    );
 }
 
-export default MoreToShop
+export default MoreToShop;
