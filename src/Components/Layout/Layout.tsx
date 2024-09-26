@@ -4,7 +4,7 @@ import Footer from '../Footer/Footer'
 
 function Layout(props: any) {
   return (
-    <div>
+    <div className='no-scrollbar'>
         <Header></Header>
        <div>
         {props.children}

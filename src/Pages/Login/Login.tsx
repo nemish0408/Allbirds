@@ -7,7 +7,7 @@ function Login() {
         <div>
             <Layout>
                 <div className='grid lg:grid-cols-2 grid-cols-1 bg-[#f1ebe7] xl:p-48'>
-                    <div className='p-10'>
+                    <div className='lg:p-10'>
                         <h2 className='mb-[50px] font-semibold text-2xl px-16'>LOGIN</h2>
                         <form>
                             <div className='px-16 mb-6'>
@@ -24,7 +24,7 @@ function Login() {
                             </div>
                         </form>
                     </div>
-                    <div className='p-10'>
+                    <div className='lg:p-10'>
                         <div className='px-16'>
                             <h2 className='mb-5 font-semibold text-2xl '>Create an Account</h2>
                             <p className='mb-5 text-sm font-normal'>We never save credit card information.</p>

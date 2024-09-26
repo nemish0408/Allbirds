@@ -18,7 +18,6 @@ function Home() {
         <HomePageSale></HomePageSale>
         <BestSeller></BestSeller>
         <MoreToShop></MoreToShop>
-        
       </Layout>
     </div>
   )
